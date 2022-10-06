@@ -5,19 +5,14 @@ import { Pokemon } from './pokemon';
 @Component({
   selector: 'app-root',
   // vues définies dans le template, syst encapsylé 
-  template: `
-      <h1>
-        Liste de Pokemons
-      </h1>
-      <!-- <ul>
-        <li>{{pokemonList}}</li>
-      </ul> -->     `
+  templateUrl: 'app.component.html'
 })
 
 export class AppComponent implements OnInit {
   // propriétés, méthodes, logique décrite dans la classe
   // on bloque l'objet pokemonList 
   pokemonList: Pokemon[] = POKEMONS;
+  pokemonSelected: Pokemon|undefined;
 
   constructor() {
    // interdit de déclarer ici: this.pokemonList=[];
@@ -26,10 +21,22 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     // par défaut void : méthode vide 
  console.table(this.pokemonList); 
- this.selectPokemon(this.pokemonList[2]);
   }
   // méthode 
-  selectPokemon(pokemon: Pokemon) {
-    console.log(`vous avez cliqué sur le pokémon ${pokemon.name}`);  
+  // selectPokemon(event: MouseEvent) {
+    // caster le type d'élément pour le click 
+    //+() pour transformer en type nombre 
+    // const index: number = +(event.target as HTMLInputElement).value;
+
+    selectPokemon(pokemonId: string) { 
+    const pokemon: Pokemon|undefined = this.pokemonList.find(pokemon => pokemon.id == +pokemonId);
+    if (pokemon) {
+    console.log(`vous avez cliqué sur le pokémon ${pokemon.name}`);   
+    this.pokemonSelected = pokemon;
+    } else {
+      console.log(`vous avez cliqué sur un pokémon qui n'existe pas`);
+      this.pokemonSelected = pokemon;
+      // ces propriétés poussées dans le template à l'interpolation
+    }
   }
   }
