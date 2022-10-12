@@ -22,7 +22,7 @@ export class AppComponent implements OnInit {
     // par défaut void : méthode vide 
  console.table(this.pokemonList); 
   }
-  // méthode 
+  // méthodes ici  
   // selectPokemon(event: MouseEvent) {
     // caster le type d'élément pour le click 
     //+() pour transformer en type nombre 
