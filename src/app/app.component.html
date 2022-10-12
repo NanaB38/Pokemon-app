@@ -1,5 +1,5 @@
   <h1>Liste de Pokemons</h1>
-  <!-- interpolation de la classe du composant vers le template  -->
+
   <input 
   #input
   (keyup.enter)="selectPokemon(input.value)"
@@ -7,10 +7,34 @@
   />
    <!-- équivalent à <p (click)="selectPokemon(pokemonList[0])">{{pokemonList[0].name}}</p> -->
  
-    <p *ngIf='pokemonSelected'>Vous avez sélectionné : {{pokemonSelected?.name}}</p>         
+    <p *ngIf='pokemonSelected'>Vous avez sélectionné : {{pokemonSelected.name}}</p>         
     <p *ngIf='!pokemonSelected'>Aucun pokémon n'a été trouvé...  😢</p>  
-    <!-- directive structurelle *ngIf        -->
-    <p *ngFor='let pokemon of pokemonList' >
-    {{pokemon.name}}
-    </p>
-  
+    <!-- directive structurelle *ngIf   -->
+  <!-- interpolation de la classe du composant vers le template  -->
+  <div class="container">
+    <div class="row">
+    <div *ngFor='let pokemon of pokemonList' class='col m4 s6' >
+        <div class="card">
+        <div class="card-image">
+          <img src={{pokemon.picture}}>
+        </div>
+        <div class='card-content'>
+ <h3 class="card-title black-text">{{pokemon.name}}</h3>
+        <p class='bold'>{{pokemon.types}}</p>
+          <p><small>{{pokemon.created}}</small></p>
+        </div>
+        <div class="card-action">
+          <a href="#">Capturer</a>
+        </div>
+        </div>
+      </div>
+      </div>
+    </div>
+
+     
+        
+
+      
+
+
+    
