@@ -1,20 +1,24 @@
-  <h1>Liste de Pokemons</h1>
+  <div class='blue m0'>
+    <h1 class='center white-text'>Liste de Pokemons</h1>
 
-  <input 
+  <!-- <input 
   #input
   (keyup.enter)="selectPokemon(input.value)"
   type='number'
-  />
+  class='white width'
+  /> -->
    <!-- équivalent à <p (click)="selectPokemon(pokemonList[0])">{{pokemonList[0].name}}</p> -->
- 
+<!--  
     <p *ngIf='pokemonSelected'>Vous avez sélectionné : {{pokemonSelected.name}}</p>         
     <p *ngIf='!pokemonSelected'>Aucun pokémon n'a été trouvé...  😢</p>  
+    </div> -->
     <!-- directive structurelle *ngIf   -->
   <!-- interpolation de la classe du composant vers le template  -->
+   <div class=' #e53935 red darken-1'>
   <div class="container">
     <div class="row">
     <div *ngFor='let pokemon of pokemonList' class='col m4 s6' >
-        <div class="card">
+        <div class="card" (click)="selectPokemon" pkmBorderCard>
         <div class="card-image">
           <img src={{pokemon.picture}}>
         </div>
@@ -29,6 +33,9 @@
         </div>
       </div>
       </div>
+    </div>
+
+
     </div>
 
      
